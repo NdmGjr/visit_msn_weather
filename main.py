@@ -149,11 +149,11 @@ def right_time(task):
     if task == 0:
         return True
     elif task == 1:
-        return 8 <= current_hour <= 10
+        return 8 <= current_hour < 10
     elif task == 2:
-        return 12 <= current_hour <= 14
+        return 12 <= current_hour < 14
     elif task == 3:
-        return 16 <= current_hour <= 18
+        return 16 <= current_hour < 18
     else:
         return False
 
@@ -164,7 +164,7 @@ def run_scheduler(stop_event):
             if not task and right_time(i):
                 if visit_msn_weather(i):
                     update_vars(i)
-        time.sleep(60)
+        time.sleep(60*30)
 
 # start the scheduler thread
 stop_event = threading.Event()
